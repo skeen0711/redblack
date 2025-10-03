@@ -31,7 +31,7 @@ func (t *RedBlackTree) Insert(key int, value string) {
 		newNode.Color = Black // Root is always black
 		return
 	}
-
+	// BST search for node
 	currNode := t.Root
 	for currNode != nil {
 		if key < currNode.Key {
