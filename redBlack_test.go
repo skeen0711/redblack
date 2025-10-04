@@ -66,7 +66,11 @@ func TestRotate(t *testing.T) {
 		if x.Right != y.Left {
 			t.Errorf("expected right child of x to be %v, got %v", y.Left, x.Right)
 		}
-		if y.Right != x.Right {
-		}
+		// TODO::::
+		// Add qualifications for the parent and make sure test is conclusive
+
 	})
+
+	// TODO::::
+	// Add t.Run("right rotation", func(t *testing.T) {}
 }
