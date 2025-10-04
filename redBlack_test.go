@@ -45,3 +45,28 @@ func TestRedBlackTree(t *testing.T) {
 		}
 	})
 }
+
+func TestRotate(t *testing.T) {
+	t.Run("left rotate", func(t *testing.T) {
+		tree := NewRedBlackTree()
+
+		x := &Node{Key: 1, Value: "one", Color: Red, Left: &Node{Key: 2, Value: "two", Color: Red, Left: &Node{Key: 3, Value: "three", Color: Red}}}
+		y := &Node{Key: 2, Value: "two", Color: Red, Right: &Node{Key: 3, Value: "three", Color: Red}}
+		x.Right = y
+		y.Parent = x
+
+		tree.LeftRotate(x)
+
+		if tree.Root != y {
+			t.Errorf("expected root to be %v, got %v", y, tree.Root)
+		}
+		if y.Left != x {
+			t.Errorf("expected left child of y to be %v, got %v", x, y.Left)
+		}
+		if x.Right != y.Left {
+			t.Errorf("expected right child of x to be %v, got %v", y.Left, x.Right)
+		}
+		if y.Right != x.Right {
+		}
+	})
+}

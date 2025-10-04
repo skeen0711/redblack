@@ -23,6 +23,25 @@ func NewRedBlackTree() *RedBlackTree {
 	return &RedBlackTree{}
 }
 
+func (t *RedBlackTree) leftRotate(x *Node) {
+	y := x.Right
+	x.Right = y.Left
+	if y.Left != nil {
+		y.Left.Parent = x
+	}
+	y.Parent = x.Parent
+	if x.Parent == nil {
+		t.Root = y
+	} else if x == x.Parent.Left {
+		x.Parent.Left = y
+	} else {
+		x.Parent.Right = y
+	}
+	y.Left = x
+	x.Parent = y
+
+}
+
 func (t *RedBlackTree) Insert(key int, value string) {
 	newNode := &Node{Key: key, Value: value, Color: Red}
 
@@ -67,4 +86,22 @@ func (t *RedBlackTree) Search(key int) (string, bool) {
 		}
 	}
 	return "", false
+}
+
+func (t *RedBlackTree) LeftRotate(x *Node) {
+	y := x.Right
+	x.Right = y.Left
+	if y.Left != nil {
+		y.Left.Parent = x
+	}
+	y.Parent = x.Parent
+	if x.Parent == nil {
+		t.Root = y
+	} else if x == x.Parent.Left {
+		x.Parent.Left = y
+	} else {
+		x.Parent.Right = y
+	}
+	y.Left = x
+	x.Parent = y
 }
