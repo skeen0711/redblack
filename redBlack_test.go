@@ -3,9 +3,9 @@ package redblack
 import "testing"
 
 func TestNode(t *testing.T) {
-	root := &Node{1, false, nil, nil}
-	root.Left = &Node{2, true, nil, nil}
-	root.Right = &Node{3, true, nil, nil}
+	root := &Node{1, false, nil, nil, nil}
+	root.Left = &Node{2, true, nil, nil, root}
+	root.Right = &Node{3, true, nil, nil, root}
 
 	rightColor := root.Right.isRed
 	rightValue := root.Right.Value
@@ -18,10 +18,10 @@ func TestNode(t *testing.T) {
 }
 
 func TestInsertRedBlackTree(t *testing.T) {
-	root := &Node{1, false, nil, nil}
+	root := &Node{1, false, nil, nil, nil}
 	tree := RedBlackTree{root}
-	left := &Node{0, true, nil, nil}
-	right := &Node{2, true, nil, nil}
+	left := &Node{0, true, nil, nil, root}
+	right := &Node{2, true, nil, nil, root}
 	rerr := tree.Insert(left)
 	if rerr != nil {
 		return

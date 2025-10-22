@@ -3,10 +3,11 @@ package redblack
 import "errors"
 
 type Node struct {
-	Value int
-	isRed bool
-	Left  *Node
-	Right *Node
+	Value  int
+	isRed  bool
+	Left   *Node
+	Right  *Node
+	Parent *Node
 }
 
 type RedBlackTree struct {
