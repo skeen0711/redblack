@@ -3,13 +3,13 @@ package redblack
 import "testing"
 
 func TestNode(t *testing.T) {
-	root := &Node{1, false, nil, nil, nil}
-	root.Left = &Node{2, true, nil, nil, root}
-	root.Right = &Node{3, true, nil, nil, root}
+	root := &Node{1, "Black", nil, nil, nil}
+	root.Left = &Node{2, "Red", nil, nil, root}
+	root.Right = &Node{3, "Red", nil, nil, root}
 
-	rightColor := root.Right.isRed
+	rightColor := root.Right.Color
 	rightValue := root.Right.Value
-	if rightColor != true {
+	if rightColor != "Red" {
 		t.Errorf("Expected right node to be true (red), got %v", rightColor)
 	}
 	if rightValue != 3 {
@@ -18,10 +18,10 @@ func TestNode(t *testing.T) {
 }
 
 func TestInsertRedBlackTree(t *testing.T) {
-	root := &Node{1, false, nil, nil, nil}
+	root := &Node{1, "Black", nil, nil, nil}
 	tree := RedBlackTree{root}
-	left := &Node{0, true, nil, nil, root}
-	right := &Node{2, true, nil, nil, root}
+	left := &Node{0, "Red", nil, nil, root}
+	right := &Node{2, "Red", nil, nil, root}
 	rerr := tree.Insert(left)
 	if rerr != nil {
 		return
@@ -37,10 +37,10 @@ func TestInsertRedBlackTree(t *testing.T) {
 	if newRoot.Right.Value != 2 {
 		t.Errorf("Expected right node to be 2, got %v", newRoot.Right.Value)
 	}
-	if newRoot.Left.isRed != true {
-		t.Errorf("Expected left node to be true (red), got %v", newRoot.Left.isRed)
+	if newRoot.Left.Color != "Red" {
+		t.Errorf("Expected left node to be true (red), got %v", newRoot.Left.Color)
 	}
-	if newRoot.Right.isRed != true {
-		t.Errorf("Expected right node to be true (red), got %v", newRoot.Right.isRed)
+	if newRoot.Right.Color != "Red" {
+		t.Errorf("Expected right node to be true (red), got %v", newRoot.Right.Color)
 	}
 }

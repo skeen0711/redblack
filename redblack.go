@@ -4,7 +4,7 @@ import "errors"
 
 type Node struct {
 	Value  int
-	isRed  bool
+	Color  string
 	Left   *Node
 	Right  *Node
 	Parent *Node
