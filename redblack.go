@@ -19,6 +19,10 @@ func (t RedBlackTree) validateTree() {
 }
 
 func (t RedBlackTree) Insert(node *Node) error {
+	if t.Root == nil {
+		t.Root = node
+		return nil
+	}
 	// If node is equal, cannot insert
 	// Check if I can continue right or left. If I cannot continue insert on
 	// the correct side of currNode
@@ -32,6 +36,7 @@ func (t RedBlackTree) Insert(node *Node) error {
 			rightNode := currNode.Right
 			if rightNode == nil {
 				currNode.Right = node
+				node.Parent = currNode
 				if currNode.Color == "Red" {
 					// check for errors
 					t.validateTree()
@@ -44,6 +49,7 @@ func (t RedBlackTree) Insert(node *Node) error {
 			leftNode := currNode.Left
 			if leftNode == nil {
 				currNode.Left = node
+				node.Parent = currNode
 				if currNode.Color == "Red" {
 					// check for errors
 					t.validateTree()
