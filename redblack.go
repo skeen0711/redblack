@@ -14,7 +14,7 @@ type RedBlackTree struct {
 	Root *Node
 }
 
-func (t RedBlackTree) validateTree() {
+func (t *RedBlackTree) validateTree(x *Node) {
 	return
 }
 
@@ -39,7 +39,7 @@ func (t RedBlackTree) Insert(node *Node) error {
 				node.Parent = currNode
 				if currNode.Color == "Red" {
 					// check for errors
-					t.validateTree()
+					t.validateTree(node)
 				}
 				return nil
 			} else {
@@ -52,7 +52,7 @@ func (t RedBlackTree) Insert(node *Node) error {
 				node.Parent = currNode
 				if currNode.Color == "Red" {
 					// check for errors
-					t.validateTree()
+					t.validateTree(node)
 				}
 				return nil
 			} else {
