@@ -19,7 +19,7 @@ func TestNode(t *testing.T) {
 
 func TestInsertRedBlackTree(t *testing.T) {
 	root := &Node{1, "Black", nil, nil, nil}
-	tree := RedBlackTree{root}
+	tree := &RedBlackTree{root}
 	left := &Node{0, "Red", nil, nil, root}
 	right := &Node{2, "Red", nil, nil, root}
 	rerr := tree.Insert(left)
