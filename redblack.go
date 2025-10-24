@@ -30,7 +30,7 @@ func (t RedBlackTree) Insert(node *Node) error {
 				currNode.Right = node
 				if currNode.Parent.Color == "Red" {
 					// check for errors
-					validateTree()
+					t.validateTree()
 				}
 				return nil
 			} else {
@@ -42,7 +42,7 @@ func (t RedBlackTree) Insert(node *Node) error {
 				currNode.Left = node
 				if currNode.Parent.Color == "Red" {
 					// check for errors
-					validateTree()
+					t.validateTree()
 				}
 				return nil
 			} else {
